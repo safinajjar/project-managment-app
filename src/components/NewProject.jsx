@@ -1,17 +1,21 @@
 import { useRef } from "react";
 import Input from "./Input";
 
-export default function NewProject({ onCancelAddProject }) {
+export default function NewProject({ onCancelAddProject, onAddProject }) {
   const projectName = useRef(null);
   const description = useRef(null);
   const dueDate = useRef(null);
 
   const handleSaveProject = () => {
-    const project = {
-      name: projectName.current.value,
-      description: description.current.value,
-      dueDate: dueDate.current.value,
-    };
+    const enteredName = projectName.current.value;
+    const enteredDescription = description.current.value;
+    const enteredDueDate = dueDate.current.value;
+
+    onAddProject({
+      name: enteredName,
+      description: enteredDescription,
+      dueDate: enteredDueDate,
+    });
   };
 
   return (
@@ -35,14 +39,19 @@ export default function NewProject({ onCancelAddProject }) {
         </li>
       </menu>
       <div>
-        <Input id="projectName" ref={projectName} label="Project Name" />
+        <Input
+          id="projectName"
+          type="text"
+          ref={projectName}
+          label="Project Name"
+        />
         <Input
           id="description"
           ref={description}
           label="Description"
           textarea
         />
-        <Input id="due_date" ref={dueDate} label="Due Date" />
+        <Input id="due_date" type="date" ref={dueDate} label="Due Date" />
       </div>
     </div>
   );

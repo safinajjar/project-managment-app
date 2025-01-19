@@ -12,7 +12,7 @@ export default function Input({ ref, label, textarea, ...props }) {
       {textarea ? (
         <textarea ref={ref} className={classes} {...props} />
       ) : (
-        <input ref={ref} className={classes} type="text" {...props} />
+        <input ref={ref} className={classes} {...props} />
       )}
     </p>
   );
