@@ -1,4 +1,4 @@
-import Tasks from "./Tasks";
+import Tasks from "../Tasks/Tasks";
 
 export default function SelectedProject({ project, onDelete }) {
   const formatedDate = new Date(project.dueDate).toLocaleDateString("de-DE");
